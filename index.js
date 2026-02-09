@@ -15,10 +15,15 @@ app.get("/", (req, res) => {
 // API routes
 app.use("/api", apiRouter);
 
-// 404 route not found (must be AFTER routes)
-app.use((req, res, next) => {
+// 404 handler
+app.use((req, res) => {
   res.status(404).json({ error: "Route not found" });
 });
+
+app.listen(PORT, () => {
+  console.log(`Server running on http://localhost:${PORT}`);
+});
+
 
 app.listen(PORT, () => {
   console.log(`Server running on http://localhost:${PORT}`);
